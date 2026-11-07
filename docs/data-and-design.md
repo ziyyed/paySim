@@ -7,7 +7,7 @@ The selected source is Kaggle’s **Synthetic Financial Datasets For Fraud Detec
 - Dataset page: <https://www.kaggle.com/datasets/ealaxi/paysim1>
 - Listed license: **CC BY-SA 4.0**.
 - Main file: PS_20174392719_1491204439457_log.csv, listed at about 493.53 MB.
-- The source is not stored in this repository. The official downloaded file was audited locally; its byte size, SHA-256, row counts, and quality results are recorded in `results/paysim-audit-manifest.json`.
+- The full source is not stored in this repository. The official downloaded file was audited locally; its byte size, SHA-256, row counts, and quality results are recorded in `results/paysim-audit-manifest.json`. A small two-step sample is included under CC BY-SA 4.0, with attribution, after removing the balance fields and separating the label from the predictor file.
 - The published Kaggle page indicates 11 columns and a simulated time axis of up to 744 hourly steps. The audit records the actual header and observed step range rather than substituting expected values for results.
 
 Attribution: Edgar Lopez-Rojas and collaborators, “PaySim: A financial mobile money simulator for fraud detection,” EMSS 2016, as cited by the Kaggle dataset page. Share adaptations of the dataset under the terms of CC BY-SA 4.0 when required by that license.
@@ -37,4 +37,6 @@ Use ordered, non-overlapping periods: training steps precede validation steps, w
 
 ## Current evidence state
 
-The official source manifest reports 6,362,620 valid rows, zero rejected rows, 8,213 fraud rows, and 6,354,407 normal rows across observed steps 1–743. It records all per-step class counts, the 11-column schema, a 493,534,783-byte source size, and SHA-256 `16910f90577b0d981bf8ff289714510bb89bc71bff7d3f220f024e287e4eea6b`. Quality checks found no blank cells, unknown transaction types, negative balance values, or exact duplicate rows; 16 rows have zero transaction amount, and 16 rows are flagged by `isFlaggedFraud`. The raw CSV remains outside this package. The package’s small fixture is for logic checks only.
+The official source manifest reports 6,362,620 valid rows, zero rejected rows, 8,213 fraud rows, and 6,354,407 normal rows across observed steps 1–743. It records all per-step class counts, the 11-column schema, a 493,534,783-byte source size, and SHA-256 `16910f90577b0d981bf8ff289714510bb89bc71bff7d3f220f024e287e4eea6b`. Quality checks found no blank cells, unknown transaction types, negative balance values, or exact duplicate rows; 16 rows have zero transaction amount, and 16 rows are flagged by `isFlaggedFraud`.
+
+The exploratory report visualizes the class imbalance, fraud counts by simulated step, and transaction-amount dispersion by type. A deterministic steps 1–2 sample contains 3,722 rows, including 24 fraud and 3,698 normal transactions. The source has 11 columns; the transformed sample keeps five allowed predictors and stores `isFraud` in a separate label file. It preserves all 3,722 rows, while four balance fields and `isFlaggedFraud` are excluded from predictors. The full raw CSV remains outside this package. The separate toy fixture is for hand-calculated logic checks.

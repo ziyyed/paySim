@@ -1,0 +1,3136 @@
+{
+  "amount_dispersion_plot": {
+    "measure": "log10(1 + amount)",
+    "sampling": {
+      "maximum_per_type": 10000,
+      "method": "Algorithm R reservoir sampling, independently counted by transaction type",
+      "sampled_per_type": {
+        "CASH_IN": 10000,
+        "CASH_OUT": 10000,
+        "DEBIT": 10000,
+        "PAYMENT": 10000,
+        "TRANSFER": 10000
+      },
+      "seed": 42
+    }
+  },
+  "before_after": {
+    "before_rows": 6362620,
+    "before_schema": [
+      "step",
+      "type",
+      "amount",
+      "nameOrig",
+      "oldbalanceOrg",
+      "newbalanceOrig",
+      "nameDest",
+      "oldbalanceDest",
+      "newbalanceDest",
+      "isFraud",
+      "isFlaggedFraud"
+    ],
+    "excluded_from_predictors": [
+      "oldbalanceOrg",
+      "newbalanceOrig",
+      "oldbalanceDest",
+      "newbalanceDest",
+      "isFlaggedFraud"
+    ],
+    "predictor_schema": [
+      "step",
+      "type",
+      "amount",
+      "nameOrig",
+      "nameDest"
+    ],
+    "rejected_rows": 0,
+    "row_policy": "No source rows are removed from the official audit.",
+    "sample": {
+      "excluded_from_predictors": [
+        "oldbalanceOrg",
+        "newbalanceOrig",
+        "oldbalanceDest",
+        "newbalanceDest",
+        "isFlaggedFraud"
+      ],
+      "feature_file": "data/samples/steps_001_002_features.csv",
+      "feature_file_columns": [
+        "source_row_id",
+        "step",
+        "type",
+        "amount",
+        "nameOrig",
+        "nameDest"
+      ],
+      "feature_file_sha256": "47f401942fb37ddb79f0942c6de50b10e1770309c2ac4bfdfb1fcb5fe47f6395",
+      "feature_file_size_bytes": 229606,
+      "fraud_rows": 24,
+      "label_file": "data/samples/steps_001_002_labels.csv",
+      "label_file_columns": [
+        "source_row_id",
+        "isFraud"
+      ],
+      "label_file_sha256": "dcefe81ca3470cb1f10a1d879c3ca33f51cacd4de35fb3b2047be9f78cf1375e",
+      "label_file_size_bytes": 81906,
+      "normal_rows": 3698,
+      "predictor_columns": [
+        "step",
+        "type",
+        "amount",
+        "nameOrig",
+        "nameDest"
+      ],
+      "row_count_preserved": true,
+      "rows_after_features": 3722,
+      "rows_after_labels": 3722,
+      "rows_before": 3722,
+      "rule": "all source rows with 1 <= step <= 2, in source order",
+      "step_max": 2,
+      "step_min": 1
+    },
+    "separate_label_schema": [
+      "isFraud"
+    ],
+    "validated_rows": 6362620,
+    "validated_schema": [
+      "step",
+      "type",
+      "amount",
+      "nameOrig",
+      "oldbalanceOrg",
+      "newbalanceOrig",
+      "nameDest",
+      "oldbalanceDest",
+      "newbalanceDest",
+      "isFraud",
+      "isFlaggedFraud"
+    ]
+  },
+  "dataset": {
+    "license": "CC BY-SA 4.0",
+    "source_file": "PS_20174392719_1491204439457_log.csv",
+    "source_sha256": "16910f90577b0d981bf8ff289714510bb89bc71bff7d3f220f024e287e4eea6b",
+    "source_size_bytes": 493534783,
+    "source_url": "https://www.kaggle.com/datasets/ealaxi/paysim1",
+    "title": "Synthetic Financial Datasets For Fraud Detection (PaySim)"
+  },
+  "eda_schema_version": 1,
+  "figures": [
+    "docs/evidence/figures/class-imbalance.png",
+    "docs/evidence/figures/fraud-by-step.png",
+    "docs/evidence/figures/amount-dispersion-by-type.png",
+    "docs/evidence/figures/before-after-preparation.png"
+  ],
+  "full_source": {
+    "class_counts_by_step": {
+      "1": {
+        "fraud": 16,
+        "normal": 2692
+      },
+      "10": {
+        "fraud": 11,
+        "normal": 35980
+      },
+      "100": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "101": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "102": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "103": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "104": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "105": {
+        "fraud": 18,
+        "normal": 0
+      },
+      "106": {
+        "fraud": 18,
+        "normal": 0
+      },
+      "107": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "108": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "109": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "11": {
+        "fraud": 7,
+        "normal": 37234
+      },
+      "110": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "111": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "112": {
+        "fraud": 2,
+        "normal": 0
+      },
+      "113": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "114": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "115": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "116": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "117": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "118": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "119": {
+        "fraud": 10,
+        "normal": 5730
+      },
+      "12": {
+        "fraud": 14,
+        "normal": 36139
+      },
+      "120": {
+        "fraud": 12,
+        "normal": 3132
+      },
+      "121": {
+        "fraud": 14,
+        "normal": 1060
+      },
+      "122": {
+        "fraud": 14,
+        "normal": 400
+      },
+      "123": {
+        "fraud": 6,
+        "normal": 46
+      },
+      "124": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "125": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "126": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "127": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "128": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "129": {
+        "fraud": 6,
+        "normal": 21980
+      },
+      "13": {
+        "fraud": 14,
+        "normal": 37501
+      },
+      "130": {
+        "fraud": 6,
+        "normal": 32884
+      },
+      "131": {
+        "fraud": 16,
+        "normal": 36359
+      },
+      "132": {
+        "fraud": 10,
+        "normal": 35926
+      },
+      "133": {
+        "fraud": 10,
+        "normal": 35137
+      },
+      "134": {
+        "fraud": 10,
+        "normal": 32381
+      },
+      "135": {
+        "fraud": 8,
+        "normal": 27548
+      },
+      "136": {
+        "fraud": 10,
+        "normal": 30330
+      },
+      "137": {
+        "fraud": 12,
+        "normal": 32547
+      },
+      "138": {
+        "fraud": 4,
+        "normal": 31418
+      },
+      "139": {
+        "fraud": 4,
+        "normal": 46050
+      },
+      "14": {
+        "fraud": 12,
+        "normal": 41473
+      },
+      "140": {
+        "fraud": 14,
+        "normal": 36998
+      },
+      "141": {
+        "fraud": 8,
+        "normal": 16426
+      },
+      "142": {
+        "fraud": 8,
+        "normal": 12181
+      },
+      "143": {
+        "fraud": 16,
+        "normal": 7593
+      },
+      "144": {
+        "fraud": 10,
+        "normal": 3513
+      },
+      "145": {
+        "fraud": 14,
+        "normal": 1103
+      },
+      "146": {
+        "fraud": 10,
+        "normal": 512
+      },
+      "147": {
+        "fraud": 6,
+        "normal": 78
+      },
+      "148": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "149": {
+        "fraud": 22,
+        "normal": 0
+      },
+      "15": {
+        "fraud": 20,
+        "normal": 44589
+      },
+      "150": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "151": {
+        "fraud": 18,
+        "normal": 0
+      },
+      "152": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "153": {
+        "fraud": 10,
+        "normal": 19465
+      },
+      "154": {
+        "fraud": 10,
+        "normal": 29231
+      },
+      "155": {
+        "fraud": 8,
+        "normal": 29919
+      },
+      "156": {
+        "fraud": 18,
+        "normal": 27585
+      },
+      "157": {
+        "fraud": 16,
+        "normal": 29748
+      },
+      "158": {
+        "fraud": 8,
+        "normal": 27831
+      },
+      "159": {
+        "fraud": 10,
+        "normal": 27551
+      },
+      "16": {
+        "fraud": 10,
+        "normal": 42461
+      },
+      "160": {
+        "fraud": 26,
+        "normal": 27739
+      },
+      "161": {
+        "fraud": 14,
+        "normal": 33035
+      },
+      "162": {
+        "fraud": 10,
+        "normal": 40612
+      },
+      "163": {
+        "fraud": 8,
+        "normal": 46344
+      },
+      "164": {
+        "fraud": 14,
+        "normal": 39088
+      },
+      "165": {
+        "fraud": 4,
+        "normal": 16538
+      },
+      "166": {
+        "fraud": 6,
+        "normal": 12170
+      },
+      "167": {
+        "fraud": 6,
+        "normal": 7940
+      },
+      "168": {
+        "fraud": 2,
+        "normal": 3822
+      },
+      "169": {
+        "fraud": 10,
+        "normal": 1454
+      },
+      "17": {
+        "fraud": 7,
+        "normal": 43354
+      },
+      "170": {
+        "fraud": 16,
+        "normal": 513
+      },
+      "171": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "172": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "173": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "174": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "175": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "176": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "177": {
+        "fraud": 18,
+        "normal": 17318
+      },
+      "178": {
+        "fraud": 14,
+        "normal": 28190
+      },
+      "179": {
+        "fraud": 8,
+        "normal": 30526
+      },
+      "18": {
+        "fraud": 16,
+        "normal": 49563
+      },
+      "180": {
+        "fraud": 10,
+        "normal": 31471
+      },
+      "181": {
+        "fraud": 11,
+        "normal": 31738
+      },
+      "182": {
+        "fraud": 8,
+        "normal": 31892
+      },
+      "183": {
+        "fraud": 16,
+        "normal": 31183
+      },
+      "184": {
+        "fraud": 8,
+        "normal": 32167
+      },
+      "185": {
+        "fraud": 16,
+        "normal": 37307
+      },
+      "186": {
+        "fraud": 17,
+        "normal": 43730
+      },
+      "187": {
+        "fraud": 10,
+        "normal": 49073
+      },
+      "188": {
+        "fraud": 10,
+        "normal": 39069
+      },
+      "189": {
+        "fraud": 10,
+        "normal": 17664
+      },
+      "19": {
+        "fraud": 11,
+        "normal": 51341
+      },
+      "190": {
+        "fraud": 8,
+        "normal": 12661
+      },
+      "191": {
+        "fraud": 12,
+        "normal": 9099
+      },
+      "192": {
+        "fraud": 10,
+        "normal": 4304
+      },
+      "193": {
+        "fraud": 8,
+        "normal": 1503
+      },
+      "194": {
+        "fraud": 12,
+        "normal": 659
+      },
+      "195": {
+        "fraud": 10,
+        "normal": 131
+      },
+      "196": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "197": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "198": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "199": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "2": {
+        "fraud": 8,
+        "normal": 1006
+      },
+      "20": {
+        "fraud": 4,
+        "normal": 40621
+      },
+      "200": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "201": {
+        "fraud": 8,
+        "normal": 17955
+      },
+      "202": {
+        "fraud": 2,
+        "normal": 31947
+      },
+      "203": {
+        "fraud": 8,
+        "normal": 36168
+      },
+      "204": {
+        "fraud": 6,
+        "normal": 36850
+      },
+      "205": {
+        "fraud": 16,
+        "normal": 33533
+      },
+      "206": {
+        "fraud": 12,
+        "normal": 29765
+      },
+      "207": {
+        "fraud": 6,
+        "normal": 28282
+      },
+      "208": {
+        "fraud": 21,
+        "normal": 29037
+      },
+      "209": {
+        "fraud": 6,
+        "normal": 30366
+      },
+      "21": {
+        "fraud": 5,
+        "normal": 19147
+      },
+      "210": {
+        "fraud": 8,
+        "normal": 32996
+      },
+      "211": {
+        "fraud": 14,
+        "normal": 36875
+      },
+      "212": {
+        "fraud": 40,
+        "normal": 34007
+      },
+      "213": {
+        "fraud": 8,
+        "normal": 14767
+      },
+      "214": {
+        "fraud": 12,
+        "normal": 10734
+      },
+      "215": {
+        "fraud": 10,
+        "normal": 7965
+      },
+      "216": {
+        "fraud": 6,
+        "normal": 4124
+      },
+      "217": {
+        "fraud": 16,
+        "normal": 3331
+      },
+      "218": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "219": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "22": {
+        "fraud": 23,
+        "normal": 12612
+      },
+      "220": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "221": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "222": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "223": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "224": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "225": {
+        "fraud": 12,
+        "normal": 18354
+      },
+      "226": {
+        "fraud": 12,
+        "normal": 27510
+      },
+      "227": {
+        "fraud": 14,
+        "normal": 30857
+      },
+      "228": {
+        "fraud": 16,
+        "normal": 30949
+      },
+      "229": {
+        "fraud": 8,
+        "normal": 28296
+      },
+      "23": {
+        "fraud": 2,
+        "normal": 6142
+      },
+      "230": {
+        "fraud": 17,
+        "normal": 26017
+      },
+      "231": {
+        "fraud": 17,
+        "normal": 26951
+      },
+      "232": {
+        "fraud": 10,
+        "normal": 27472
+      },
+      "233": {
+        "fraud": 12,
+        "normal": 14691
+      },
+      "234": {
+        "fraud": 14,
+        "normal": 34039
+      },
+      "235": {
+        "fraud": 10,
+        "normal": 47481
+      },
+      "236": {
+        "fraud": 10,
+        "normal": 37099
+      },
+      "237": {
+        "fraud": 12,
+        "normal": 15991
+      },
+      "238": {
+        "fraud": 14,
+        "normal": 10906
+      },
+      "239": {
+        "fraud": 10,
+        "normal": 8544
+      },
+      "24": {
+        "fraud": 6,
+        "normal": 3210
+      },
+      "240": {
+        "fraud": 14,
+        "normal": 4175
+      },
+      "241": {
+        "fraud": 18,
+        "normal": 1847
+      },
+      "242": {
+        "fraud": 8,
+        "normal": 629
+      },
+      "243": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "244": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "245": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "246": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "247": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "248": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "249": {
+        "fraud": 28,
+        "normal": 23181
+      },
+      "25": {
+        "fraud": 18,
+        "normal": 1580
+      },
+      "250": {
+        "fraud": 22,
+        "normal": 31832
+      },
+      "251": {
+        "fraud": 10,
+        "normal": 35259
+      },
+      "252": {
+        "fraud": 2,
+        "normal": 35588
+      },
+      "253": {
+        "fraud": 10,
+        "normal": 33301
+      },
+      "254": {
+        "fraud": 10,
+        "normal": 29543
+      },
+      "255": {
+        "fraud": 8,
+        "normal": 28832
+      },
+      "256": {
+        "fraud": 8,
+        "normal": 28562
+      },
+      "257": {
+        "fraud": 6,
+        "normal": 26837
+      },
+      "258": {
+        "fraud": 8,
+        "normal": 27654
+      },
+      "259": {
+        "fraud": 10,
+        "normal": 43318
+      },
+      "26": {
+        "fraud": 12,
+        "normal": 428
+      },
+      "260": {
+        "fraud": 12,
+        "normal": 33662
+      },
+      "261": {
+        "fraud": 20,
+        "normal": 14400
+      },
+      "262": {
+        "fraud": 22,
+        "normal": 11103
+      },
+      "263": {
+        "fraud": 6,
+        "normal": 8015
+      },
+      "264": {
+        "fraud": 8,
+        "normal": 4034
+      },
+      "265": {
+        "fraud": 12,
+        "normal": 1569
+      },
+      "266": {
+        "fraud": 10,
+        "normal": 757
+      },
+      "267": {
+        "fraud": 8,
+        "normal": 69
+      },
+      "268": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "269": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "27": {
+        "fraud": 8,
+        "normal": 33
+      },
+      "270": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "271": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "272": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "273": {
+        "fraud": 20,
+        "normal": 7851
+      },
+      "274": {
+        "fraud": 20,
+        "normal": 19182
+      },
+      "275": {
+        "fraud": 10,
+        "normal": 24787
+      },
+      "276": {
+        "fraud": 10,
+        "normal": 26373
+      },
+      "277": {
+        "fraud": 14,
+        "normal": 25911
+      },
+      "278": {
+        "fraud": 4,
+        "normal": 25733
+      },
+      "279": {
+        "fraud": 22,
+        "normal": 25903
+      },
+      "28": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "280": {
+        "fraud": 4,
+        "normal": 25952
+      },
+      "281": {
+        "fraud": 18,
+        "normal": 27760
+      },
+      "282": {
+        "fraud": 18,
+        "normal": 31100
+      },
+      "283": {
+        "fraud": 8,
+        "normal": 36636
+      },
+      "284": {
+        "fraud": 16,
+        "normal": 33433
+      },
+      "285": {
+        "fraud": 16,
+        "normal": 14250
+      },
+      "286": {
+        "fraud": 8,
+        "normal": 11325
+      },
+      "287": {
+        "fraud": 10,
+        "normal": 6879
+      },
+      "288": {
+        "fraud": 10,
+        "normal": 4008
+      },
+      "289": {
+        "fraud": 12,
+        "normal": 1425
+      },
+      "29": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "290": {
+        "fraud": 8,
+        "normal": 479
+      },
+      "291": {
+        "fraud": 10,
+        "normal": 34
+      },
+      "292": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "293": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "294": {
+        "fraud": 18,
+        "normal": 0
+      },
+      "295": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "296": {
+        "fraud": 22,
+        "normal": 0
+      },
+      "297": {
+        "fraud": 8,
+        "normal": 20601
+      },
+      "298": {
+        "fraud": 4,
+        "normal": 29575
+      },
+      "299": {
+        "fraud": 10,
+        "normal": 31930
+      },
+      "3": {
+        "fraud": 4,
+        "normal": 548
+      },
+      "30": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "300": {
+        "fraud": 8,
+        "normal": 31168
+      },
+      "301": {
+        "fraud": 4,
+        "normal": 30877
+      },
+      "302": {
+        "fraud": 8,
+        "normal": 29119
+      },
+      "303": {
+        "fraud": 14,
+        "normal": 24700
+      },
+      "304": {
+        "fraud": 2,
+        "normal": 26695
+      },
+      "305": {
+        "fraud": 14,
+        "normal": 34581
+      },
+      "306": {
+        "fraud": 12,
+        "normal": 43603
+      },
+      "307": {
+        "fraud": 16,
+        "normal": 46952
+      },
+      "308": {
+        "fraud": 6,
+        "normal": 36977
+      },
+      "309": {
+        "fraud": 8,
+        "normal": 15139
+      },
+      "31": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "310": {
+        "fraud": 10,
+        "normal": 11383
+      },
+      "311": {
+        "fraud": 16,
+        "normal": 9847
+      },
+      "312": {
+        "fraud": 10,
+        "normal": 3256
+      },
+      "313": {
+        "fraud": 10,
+        "normal": 1295
+      },
+      "314": {
+        "fraud": 6,
+        "normal": 506
+      },
+      "315": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "316": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "317": {
+        "fraud": 20,
+        "normal": 0
+      },
+      "318": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "319": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "32": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "320": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "321": {
+        "fraud": 8,
+        "normal": 17760
+      },
+      "322": {
+        "fraud": 16,
+        "normal": 27131
+      },
+      "323": {
+        "fraud": 10,
+        "normal": 29874
+      },
+      "324": {
+        "fraud": 10,
+        "normal": 29420
+      },
+      "325": {
+        "fraud": 10,
+        "normal": 27891
+      },
+      "326": {
+        "fraud": 14,
+        "normal": 26641
+      },
+      "327": {
+        "fraud": 10,
+        "normal": 25173
+      },
+      "328": {
+        "fraud": 18,
+        "normal": 26859
+      },
+      "329": {
+        "fraud": 6,
+        "normal": 32155
+      },
+      "33": {
+        "fraud": 12,
+        "normal": 23604
+      },
+      "330": {
+        "fraud": 10,
+        "normal": 36672
+      },
+      "331": {
+        "fraud": 6,
+        "normal": 40180
+      },
+      "332": {
+        "fraud": 6,
+        "normal": 36150
+      },
+      "333": {
+        "fraud": 8,
+        "normal": 14545
+      },
+      "334": {
+        "fraud": 4,
+        "normal": 12012
+      },
+      "335": {
+        "fraud": 4,
+        "normal": 10452
+      },
+      "336": {
+        "fraud": 18,
+        "normal": 2914
+      },
+      "337": {
+        "fraud": 10,
+        "normal": 310
+      },
+      "338": {
+        "fraud": 4,
+        "normal": 525
+      },
+      "339": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "34": {
+        "fraud": 22,
+        "normal": 30882
+      },
+      "340": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "341": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "342": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "343": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "344": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "345": {
+        "fraud": 12,
+        "normal": 14658
+      },
+      "346": {
+        "fraud": 6,
+        "normal": 26067
+      },
+      "347": {
+        "fraud": 0,
+        "normal": 30222
+      },
+      "348": {
+        "fraud": 8,
+        "normal": 29459
+      },
+      "349": {
+        "fraud": 18,
+        "normal": 29534
+      },
+      "35": {
+        "fraud": 15,
+        "normal": 29142
+      },
+      "350": {
+        "fraud": 14,
+        "normal": 28231
+      },
+      "351": {
+        "fraud": 18,
+        "normal": 26909
+      },
+      "352": {
+        "fraud": 16,
+        "normal": 27123
+      },
+      "353": {
+        "fraud": 8,
+        "normal": 30412
+      },
+      "354": {
+        "fraud": 12,
+        "normal": 40684
+      },
+      "355": {
+        "fraud": 8,
+        "normal": 44779
+      },
+      "356": {
+        "fraud": 6,
+        "normal": 33522
+      },
+      "357": {
+        "fraud": 18,
+        "normal": 15078
+      },
+      "358": {
+        "fraud": 10,
+        "normal": 12040
+      },
+      "359": {
+        "fraud": 12,
+        "normal": 7979
+      },
+      "36": {
+        "fraud": 19,
+        "normal": 39755
+      },
+      "360": {
+        "fraud": 8,
+        "normal": 3500
+      },
+      "361": {
+        "fraud": 14,
+        "normal": 1427
+      },
+      "362": {
+        "fraud": 20,
+        "normal": 484
+      },
+      "363": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "364": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "365": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "366": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "367": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "368": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "369": {
+        "fraud": 6,
+        "normal": 14484
+      },
+      "37": {
+        "fraud": 13,
+        "normal": 33987
+      },
+      "370": {
+        "fraud": 18,
+        "normal": 25411
+      },
+      "371": {
+        "fraud": 6,
+        "normal": 28382
+      },
+      "372": {
+        "fraud": 8,
+        "normal": 29507
+      },
+      "373": {
+        "fraud": 12,
+        "normal": 28841
+      },
+      "374": {
+        "fraud": 14,
+        "normal": 27713
+      },
+      "375": {
+        "fraud": 10,
+        "normal": 26093
+      },
+      "376": {
+        "fraud": 4,
+        "normal": 20118
+      },
+      "377": {
+        "fraud": 10,
+        "normal": 18173
+      },
+      "378": {
+        "fraud": 4,
+        "normal": 37123
+      },
+      "379": {
+        "fraud": 16,
+        "normal": 41743
+      },
+      "38": {
+        "fraud": 16,
+        "normal": 31437
+      },
+      "380": {
+        "fraud": 14,
+        "normal": 37679
+      },
+      "381": {
+        "fraud": 4,
+        "normal": 14957
+      },
+      "382": {
+        "fraud": 8,
+        "normal": 11821
+      },
+      "383": {
+        "fraud": 14,
+        "normal": 7804
+      },
+      "384": {
+        "fraud": 6,
+        "normal": 3582
+      },
+      "385": {
+        "fraud": 8,
+        "normal": 1411
+      },
+      "386": {
+        "fraud": 16,
+        "normal": 617
+      },
+      "387": {
+        "fraud": 28,
+        "normal": 0
+      },
+      "388": {
+        "fraud": 18,
+        "normal": 0
+      },
+      "389": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "39": {
+        "fraud": 12,
+        "normal": 23379
+      },
+      "390": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "391": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "392": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "393": {
+        "fraud": 4,
+        "normal": 19265
+      },
+      "394": {
+        "fraud": 10,
+        "normal": 28949
+      },
+      "395": {
+        "fraud": 8,
+        "normal": 22789
+      },
+      "396": {
+        "fraud": 8,
+        "normal": 34067
+      },
+      "397": {
+        "fraud": 10,
+        "normal": 30338
+      },
+      "398": {
+        "fraud": 26,
+        "normal": 26630
+      },
+      "399": {
+        "fraud": 12,
+        "normal": 30211
+      },
+      "4": {
+        "fraud": 10,
+        "normal": 555
+      },
+      "40": {
+        "fraud": 14,
+        "normal": 34256
+      },
+      "400": {
+        "fraud": 16,
+        "normal": 30894
+      },
+      "401": {
+        "fraud": 16,
+        "normal": 33452
+      },
+      "402": {
+        "fraud": 12,
+        "normal": 40206
+      },
+      "403": {
+        "fraud": 16,
+        "normal": 45139
+      },
+      "404": {
+        "fraud": 18,
+        "normal": 36708
+      },
+      "405": {
+        "fraud": 10,
+        "normal": 16594
+      },
+      "406": {
+        "fraud": 24,
+        "normal": 11999
+      },
+      "407": {
+        "fraud": 6,
+        "normal": 7931
+      },
+      "408": {
+        "fraud": 10,
+        "normal": 8246
+      },
+      "409": {
+        "fraud": 20,
+        "normal": 463
+      },
+      "41": {
+        "fraud": 12,
+        "normal": 36336
+      },
+      "410": {
+        "fraud": 20,
+        "normal": 0
+      },
+      "411": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "412": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "413": {
+        "fraud": 14,
+        "normal": 275
+      },
+      "414": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "415": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "416": {
+        "fraud": 8,
+        "normal": 2174
+      },
+      "417": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "418": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "419": {
+        "fraud": 10,
+        "normal": 1247
+      },
+      "42": {
+        "fraud": 14,
+        "normal": 41290
+      },
+      "420": {
+        "fraud": 12,
+        "normal": 2608
+      },
+      "421": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "422": {
+        "fraud": 10,
+        "normal": 1249
+      },
+      "423": {
+        "fraud": 6,
+        "normal": 760
+      },
+      "424": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "425": {
+        "fraud": 28,
+        "normal": 0
+      },
+      "426": {
+        "fraud": 2,
+        "normal": 5137
+      },
+      "427": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "428": {
+        "fraud": 6,
+        "normal": 2786
+      },
+      "429": {
+        "fraud": 4,
+        "normal": 2353
+      },
+      "43": {
+        "fraud": 13,
+        "normal": 45047
+      },
+      "430": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "431": {
+        "fraud": 6,
+        "normal": 1679
+      },
+      "432": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "433": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "434": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "435": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "436": {
+        "fraud": 16,
+        "normal": 232
+      },
+      "437": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "438": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "439": {
+        "fraud": 12,
+        "normal": 871
+      },
+      "44": {
+        "fraud": 8,
+        "normal": 38515
+      },
+      "440": {
+        "fraud": 18,
+        "normal": 0
+      },
+      "441": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "442": {
+        "fraud": 12,
+        "normal": 1210
+      },
+      "443": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "444": {
+        "fraud": 20,
+        "normal": 0
+      },
+      "445": {
+        "fraud": 6,
+        "normal": 58
+      },
+      "446": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "447": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "448": {
+        "fraud": 6,
+        "normal": 2542
+      },
+      "449": {
+        "fraud": 6,
+        "normal": 1188
+      },
+      "45": {
+        "fraud": 16,
+        "normal": 18484
+      },
+      "450": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "451": {
+        "fraud": 4,
+        "normal": 3747
+      },
+      "452": {
+        "fraud": 10,
+        "normal": 298
+      },
+      "453": {
+        "fraud": 8,
+        "normal": 51
+      },
+      "454": {
+        "fraud": 6,
+        "normal": 33
+      },
+      "455": {
+        "fraud": 10,
+        "normal": 814
+      },
+      "456": {
+        "fraud": 18,
+        "normal": 0
+      },
+      "457": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "458": {
+        "fraud": 6,
+        "normal": 432
+      },
+      "459": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "46": {
+        "fraud": 14,
+        "normal": 12431
+      },
+      "460": {
+        "fraud": 16,
+        "normal": 43
+      },
+      "461": {
+        "fraud": 16,
+        "normal": 67
+      },
+      "462": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "463": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "464": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "465": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "466": {
+        "fraud": 6,
+        "normal": 978
+      },
+      "467": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "468": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "469": {
+        "fraud": 8,
+        "normal": 6008
+      },
+      "47": {
+        "fraud": 21,
+        "normal": 8660
+      },
+      "470": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "471": {
+        "fraud": 2,
+        "normal": 2618
+      },
+      "472": {
+        "fraud": 8,
+        "normal": 76
+      },
+      "473": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "474": {
+        "fraud": 8,
+        "normal": 2720
+      },
+      "475": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "476": {
+        "fraud": 8,
+        "normal": 3747
+      },
+      "477": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "478": {
+        "fraud": 6,
+        "normal": 1902
+      },
+      "479": {
+        "fraud": 4,
+        "normal": 900
+      },
+      "48": {
+        "fraud": 10,
+        "normal": 5683
+      },
+      "480": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "481": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "482": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "483": {
+        "fraud": 8,
+        "normal": 309
+      },
+      "484": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "485": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "486": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "487": {
+        "fraud": 14,
+        "normal": 898
+      },
+      "488": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "489": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "49": {
+        "fraud": 4,
+        "normal": 760
+      },
+      "490": {
+        "fraud": 10,
+        "normal": 3810
+      },
+      "491": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "492": {
+        "fraud": 6,
+        "normal": 5113
+      },
+      "493": {
+        "fraud": 8,
+        "normal": 1811
+      },
+      "494": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "495": {
+        "fraud": 16,
+        "normal": 3240
+      },
+      "496": {
+        "fraud": 6,
+        "normal": 867
+      },
+      "497": {
+        "fraud": 20,
+        "normal": 0
+      },
+      "498": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "499": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "5": {
+        "fraud": 6,
+        "normal": 659
+      },
+      "50": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "500": {
+        "fraud": 4,
+        "normal": 6104
+      },
+      "501": {
+        "fraud": 28,
+        "normal": 0
+      },
+      "502": {
+        "fraud": 12,
+        "normal": 301
+      },
+      "503": {
+        "fraud": 10,
+        "normal": 1868
+      },
+      "504": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "505": {
+        "fraud": 8,
+        "normal": 928
+      },
+      "506": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "507": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "508": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "509": {
+        "fraud": 14,
+        "normal": 274
+      },
+      "51": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "510": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "511": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "512": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "513": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "514": {
+        "fraud": 14,
+        "normal": 8719
+      },
+      "515": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "516": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "517": {
+        "fraud": 6,
+        "normal": 1385
+      },
+      "518": {
+        "fraud": 8,
+        "normal": 3480
+      },
+      "519": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "52": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "520": {
+        "fraud": 12,
+        "normal": 3025
+      },
+      "521": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "522": {
+        "fraud": 14,
+        "normal": 18617
+      },
+      "523": {
+        "fraud": 30,
+        "normal": 0
+      },
+      "524": {
+        "fraud": 4,
+        "normal": 2660
+      },
+      "525": {
+        "fraud": 2,
+        "normal": 8021
+      },
+      "526": {
+        "fraud": 12,
+        "normal": 2458
+      },
+      "527": {
+        "fraud": 6,
+        "normal": 2691
+      },
+      "528": {
+        "fraud": 14,
+        "normal": 923
+      },
+      "529": {
+        "fraud": 6,
+        "normal": 27
+      },
+      "53": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "530": {
+        "fraud": 8,
+        "normal": 401
+      },
+      "531": {
+        "fraud": 14,
+        "normal": 236
+      },
+      "532": {
+        "fraud": 6,
+        "normal": 89
+      },
+      "533": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "534": {
+        "fraud": 12,
+        "normal": 519
+      },
+      "535": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "536": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "537": {
+        "fraud": 18,
+        "normal": 0
+      },
+      "538": {
+        "fraud": 10,
+        "normal": 3110
+      },
+      "539": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "54": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "540": {
+        "fraud": 6,
+        "normal": 5470
+      },
+      "541": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "542": {
+        "fraud": 10,
+        "normal": 4465
+      },
+      "543": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "544": {
+        "fraud": 6,
+        "normal": 9352
+      },
+      "545": {
+        "fraud": 0,
+        "normal": 3562
+      },
+      "546": {
+        "fraud": 10,
+        "normal": 7761
+      },
+      "547": {
+        "fraud": 8,
+        "normal": 2253
+      },
+      "548": {
+        "fraud": 2,
+        "normal": 5687
+      },
+      "549": {
+        "fraud": 12,
+        "normal": 630
+      },
+      "55": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "550": {
+        "fraud": 8,
+        "normal": 4796
+      },
+      "551": {
+        "fraud": 18,
+        "normal": 931
+      },
+      "552": {
+        "fraud": 10,
+        "normal": 1507
+      },
+      "553": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "554": {
+        "fraud": 18,
+        "normal": 0
+      },
+      "555": {
+        "fraud": 6,
+        "normal": 138
+      },
+      "556": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "557": {
+        "fraud": 20,
+        "normal": 0
+      },
+      "558": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "559": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "56": {
+        "fraud": 18,
+        "normal": 0
+      },
+      "560": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "561": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "562": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "563": {
+        "fraud": 18,
+        "normal": 3266
+      },
+      "564": {
+        "fraud": 16,
+        "normal": 3530
+      },
+      "565": {
+        "fraud": 12,
+        "normal": 5413
+      },
+      "566": {
+        "fraud": 6,
+        "normal": 1415
+      },
+      "567": {
+        "fraud": 10,
+        "normal": 4346
+      },
+      "568": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "569": {
+        "fraud": 14,
+        "normal": 1168
+      },
+      "57": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "570": {
+        "fraud": 10,
+        "normal": 1955
+      },
+      "571": {
+        "fraud": 10,
+        "normal": 4246
+      },
+      "572": {
+        "fraud": 18,
+        "normal": 0
+      },
+      "573": {
+        "fraud": 8,
+        "normal": 3479
+      },
+      "574": {
+        "fraud": 4,
+        "normal": 2610
+      },
+      "575": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "576": {
+        "fraud": 14,
+        "normal": 863
+      },
+      "577": {
+        "fraud": 12,
+        "normal": 352
+      },
+      "578": {
+        "fraud": 20,
+        "normal": 249
+      },
+      "579": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "58": {
+        "fraud": 20,
+        "normal": 0
+      },
+      "580": {
+        "fraud": 10,
+        "normal": 48
+      },
+      "581": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "582": {
+        "fraud": 16,
+        "normal": 759
+      },
+      "583": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "584": {
+        "fraud": 8,
+        "normal": 273
+      },
+      "585": {
+        "fraud": 6,
+        "normal": 2041
+      },
+      "586": {
+        "fraud": 12,
+        "normal": 1569
+      },
+      "587": {
+        "fraud": 6,
+        "normal": 2734
+      },
+      "588": {
+        "fraud": 12,
+        "normal": 4882
+      },
+      "589": {
+        "fraud": 2,
+        "normal": 6243
+      },
+      "59": {
+        "fraud": 20,
+        "normal": 0
+      },
+      "590": {
+        "fraud": 8,
+        "normal": 6576
+      },
+      "591": {
+        "fraud": 12,
+        "normal": 45
+      },
+      "592": {
+        "fraud": 10,
+        "normal": 5363
+      },
+      "593": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "594": {
+        "fraud": 10,
+        "normal": 6526
+      },
+      "595": {
+        "fraud": 12,
+        "normal": 5422
+      },
+      "596": {
+        "fraud": 8,
+        "normal": 9311
+      },
+      "597": {
+        "fraud": 6,
+        "normal": 2480
+      },
+      "598": {
+        "fraud": 4,
+        "normal": 930
+      },
+      "599": {
+        "fraud": 6,
+        "normal": 1810
+      },
+      "6": {
+        "fraud": 22,
+        "normal": 1638
+      },
+      "60": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "600": {
+        "fraud": 18,
+        "normal": 0
+      },
+      "601": {
+        "fraud": 10,
+        "normal": 855
+      },
+      "602": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "603": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "604": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "605": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "606": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "607": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "608": {
+        "fraud": 16,
+        "normal": 1066
+      },
+      "609": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "61": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "610": {
+        "fraud": 12,
+        "normal": 1187
+      },
+      "611": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "612": {
+        "fraud": 12,
+        "normal": 2665
+      },
+      "613": {
+        "fraud": 20,
+        "normal": 25
+      },
+      "614": {
+        "fraud": 16,
+        "normal": 1262
+      },
+      "615": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "616": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "617": {
+        "fraud": 16,
+        "normal": 2664
+      },
+      "618": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "619": {
+        "fraud": 14,
+        "normal": 2786
+      },
+      "62": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "620": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "621": {
+        "fraud": 18,
+        "normal": 1103
+      },
+      "622": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "623": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "624": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "625": {
+        "fraud": 24,
+        "normal": 0
+      },
+      "626": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "627": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "628": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "629": {
+        "fraud": 20,
+        "normal": 0
+      },
+      "63": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "630": {
+        "fraud": 4,
+        "normal": 146
+      },
+      "631": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "632": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "633": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "634": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "635": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "636": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "637": {
+        "fraud": 12,
+        "normal": 3378
+      },
+      "638": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "639": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "64": {
+        "fraud": 18,
+        "normal": 0
+      },
+      "640": {
+        "fraud": 14,
+        "normal": 1384
+      },
+      "641": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "642": {
+        "fraud": 8,
+        "normal": 1133
+      },
+      "643": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "644": {
+        "fraud": 10,
+        "normal": 2257
+      },
+      "645": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "646": {
+        "fraud": 20,
+        "normal": 0
+      },
+      "647": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "648": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "649": {
+        "fraud": 10,
+        "normal": 253
+      },
+      "65": {
+        "fraud": 20,
+        "normal": 0
+      },
+      "650": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "651": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "652": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "653": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "654": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "655": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "656": {
+        "fraud": 16,
+        "normal": 1949
+      },
+      "657": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "658": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "659": {
+        "fraud": 10,
+        "normal": 2490
+      },
+      "66": {
+        "fraud": 24,
+        "normal": 0
+      },
+      "660": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "661": {
+        "fraud": 8,
+        "normal": 4869
+      },
+      "662": {
+        "fraud": 2,
+        "normal": 0
+      },
+      "663": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "664": {
+        "fraud": 20,
+        "normal": 1105
+      },
+      "665": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "666": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "667": {
+        "fraud": 6,
+        "normal": 1394
+      },
+      "668": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "669": {
+        "fraud": 8,
+        "normal": 314
+      },
+      "67": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "670": {
+        "fraud": 12,
+        "normal": 1894
+      },
+      "671": {
+        "fraud": 18,
+        "normal": 0
+      },
+      "672": {
+        "fraud": 8,
+        "normal": 145
+      },
+      "673": {
+        "fraud": 12,
+        "normal": 433
+      },
+      "674": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "675": {
+        "fraud": 10,
+        "normal": 20
+      },
+      "676": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "677": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "678": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "679": {
+        "fraud": 6,
+        "normal": 66
+      },
+      "68": {
+        "fraud": 18,
+        "normal": 0
+      },
+      "680": {
+        "fraud": 22,
+        "normal": 0
+      },
+      "681": {
+        "fraud": 4,
+        "normal": 4699
+      },
+      "682": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "683": {
+        "fraud": 8,
+        "normal": 2184
+      },
+      "684": {
+        "fraud": 8,
+        "normal": 4554
+      },
+      "685": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "686": {
+        "fraud": 16,
+        "normal": 4673
+      },
+      "687": {
+        "fraud": 8,
+        "normal": 8032
+      },
+      "688": {
+        "fraud": 8,
+        "normal": 7877
+      },
+      "689": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "69": {
+        "fraud": 20,
+        "normal": 0
+      },
+      "690": {
+        "fraud": 12,
+        "normal": 4960
+      },
+      "691": {
+        "fraud": 12,
+        "normal": 4797
+      },
+      "692": {
+        "fraud": 20,
+        "normal": 6878
+      },
+      "693": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "694": {
+        "fraud": 24,
+        "normal": 2640
+      },
+      "695": {
+        "fraud": 10,
+        "normal": 2817
+      },
+      "696": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "697": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "698": {
+        "fraud": 16,
+        "normal": 49
+      },
+      "699": {
+        "fraud": 16,
+        "normal": 39
+      },
+      "7": {
+        "fraud": 12,
+        "normal": 6825
+      },
+      "70": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "700": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "701": {
+        "fraud": 18,
+        "normal": 0
+      },
+      "702": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "703": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "704": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "705": {
+        "fraud": 10,
+        "normal": 2352
+      },
+      "706": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "707": {
+        "fraud": 10,
+        "normal": 299
+      },
+      "708": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "709": {
+        "fraud": 8,
+        "normal": 2305
+      },
+      "71": {
+        "fraud": 20,
+        "normal": 0
+      },
+      "710": {
+        "fraud": 14,
+        "normal": 1774
+      },
+      "711": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "712": {
+        "fraud": 12,
+        "normal": 11
+      },
+      "713": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "714": {
+        "fraud": 14,
+        "normal": 667
+      },
+      "715": {
+        "fraud": 10,
+        "normal": 1869
+      },
+      "716": {
+        "fraud": 8,
+        "normal": 132
+      },
+      "717": {
+        "fraud": 12,
+        "normal": 620
+      },
+      "718": {
+        "fraud": 16,
+        "normal": 902
+      },
+      "719": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "72": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "720": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "721": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "722": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "723": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "724": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "725": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "726": {
+        "fraud": 22,
+        "normal": 0
+      },
+      "727": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "728": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "729": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "73": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "730": {
+        "fraud": 28,
+        "normal": 0
+      },
+      "731": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "732": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "733": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "734": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "735": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "736": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "737": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "738": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "739": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "74": {
+        "fraud": 22,
+        "normal": 0
+      },
+      "740": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "741": {
+        "fraud": 22,
+        "normal": 0
+      },
+      "742": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "743": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "75": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "76": {
+        "fraud": 4,
+        "normal": 0
+      },
+      "77": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "78": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "79": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "8": {
+        "fraud": 12,
+        "normal": 21085
+      },
+      "80": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "81": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "82": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "83": {
+        "fraud": 12,
+        "normal": 0
+      },
+      "84": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "85": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "86": {
+        "fraud": 18,
+        "normal": 0
+      },
+      "87": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "88": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "89": {
+        "fraud": 6,
+        "normal": 0
+      },
+      "9": {
+        "fraud": 19,
+        "normal": 37609
+      },
+      "90": {
+        "fraud": 16,
+        "normal": 0
+      },
+      "91": {
+        "fraud": 8,
+        "normal": 0
+      },
+      "92": {
+        "fraud": 10,
+        "normal": 0
+      },
+      "93": {
+        "fraud": 16,
+        "normal": 4428
+      },
+      "94": {
+        "fraud": 12,
+        "normal": 10360
+      },
+      "95": {
+        "fraud": 14,
+        "normal": 6844
+      },
+      "96": {
+        "fraud": 4,
+        "normal": 6346
+      },
+      "97": {
+        "fraud": 10,
+        "normal": 675
+      },
+      "98": {
+        "fraud": 14,
+        "normal": 0
+      },
+      "99": {
+        "fraud": 8,
+        "normal": 0
+      }
+    },
+    "fraud_prevalence_percent": 0.12908204,
+    "fraud_rows": 8213,
+    "normal_rows": 6354407,
+    "quality": {
+      "blank_cells_by_column": {},
+      "destination_prefix_counts": {
+        "merchant_M": 2151495,
+        "other": 4211125
+      },
+      "duplicates_removed": 0,
+      "exact_duplicate_detection": "disk-backed SQLite over parsed data-row fields",
+      "exact_duplicate_rows": 0,
+      "flagged_fraud_counts": {
+        "0": 6362604,
+        "1": 16
+      },
+      "negative_balance_values": 0,
+      "transaction_type_counts": {
+        "CASH_IN": 1399284,
+        "CASH_OUT": 2237500,
+        "DEBIT": 41432,
+        "PAYMENT": 2151495,
+        "TRANSFER": 532909
+      },
+      "unknown_type_rows": 0,
+      "zero_amount_rows": 16
+    },
+    "raw_rows": 6362620,
+    "rejected_rows": 0,
+    "step_max": 743,
+    "step_min": 1,
+    "validated_rows": 6362620
+  },
+  "runtime": {
+    "matplotlib_version": "3.9.4",
+    "python_version": "3.9.6"
+  }
+}

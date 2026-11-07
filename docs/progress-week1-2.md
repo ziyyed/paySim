@@ -9,6 +9,8 @@ This note follows the six-week plan in the P02 brief and reports only the Week 1
 - Reviewed the P02 source, schema, leakage constraints, temporal evaluation requirements, and Lambda components.
 - Documented the Kaggle source and listed CC BY-SA 4.0 license, the 11 expected columns, field-use policy, chronological split rationale, and architecture.
 - Downloaded and audited the official Kaggle CSV locally. The schema and column order match all 11 expected columns; all 6,362,620 rows pass validation, with zero rejected rows. The step range is 1–743, with 6,354,407 normal and 8,213 fraud rows. The source checksum and per-step class counts are in `results/paysim-audit-manifest.json`.
+- Added class-imbalance, fraud-by-step, and amount-dispersion figures from the official dataset, plus a before/after transformation summary.
+- Built a reproducible steps 1–2 sample (3,722 rows; 24 fraud and 3,698 normal). The transformed sample keeps five allowed predictors and writes the fraud label separately; no rows are discarded.
 - Implemented a bounded-memory audit utility for file size, SHA-256, schema, row validation, rejection reasons, step/class counts, and quality summaries.
 - Added a toy fixture and independently hand-calculated account/step references for the audit and first batch-aggregation logic.
 
@@ -34,6 +36,8 @@ This note follows the six-week plan in the P02 brief and reports only the Week 1
 **Tâches réalisées au cours des deux dernières semaines**
 - Analyse du cahier des charges P02 et formalisation du schéma PaySim, des champs interdits au scoring, de la séparation temporelle et de l’architecture Lambda.
 - Téléchargement local et audit en flux du CSV PaySim officiel : 6 362 620 lignes valides, 0 rejet, 11 colonnes conformes, 8 213 fraudes et étapes observées de 1 à 743; le CSV brut n’est pas publié.
+- Création de graphiques sur le déséquilibre des classes, les fraudes par step et la dispersion des montants par type.
+- Production d’un échantillon reproductible steps 1–2 (3 722 lignes, 24 fraudes) et d’une preuve avant/après : 5 variables explicatives autorisées, étiquette `isFraud` séparée, 0 ligne supprimée.
 - Création d’un jeu de données jouet avec résultats calculés à la main; sa vérification et les audits répétés sont reproductibles.
 - Préparation de la configuration Docker Compose Hadoop/HDFS/YARN/Kafka; vérification réussie du dépôt/lecture HDFS et de la publication/consommation Kafka d’un événement sans étiquette.
 
