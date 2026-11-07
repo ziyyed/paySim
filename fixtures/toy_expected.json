@@ -1,0 +1,157 @@
+{
+  "fixture_data_rows": 16,
+  "valid_rows": 13,
+  "rejected_rows": 3,
+  "rejections_by_reason": {
+    "duplicate_header": 1,
+    "invalid_step": 1,
+    "negative_amount": 1
+  },
+  "step_range": {
+    "min": 1,
+    "max": 30
+  },
+  "class_totals": {
+    "normal": 10,
+    "fraud": 3
+  },
+  "class_counts_by_step": {
+    "1": {
+      "normal": 1,
+      "fraud": 0
+    },
+    "2": {
+      "normal": 1,
+      "fraud": 0
+    },
+    "5": {
+      "normal": 1,
+      "fraud": 0
+    },
+    "10": {
+      "normal": 3,
+      "fraud": 1
+    },
+    "12": {
+      "normal": 1,
+      "fraud": 0
+    },
+    "20": {
+      "normal": 1,
+      "fraud": 0
+    },
+    "26": {
+      "normal": 1,
+      "fraud": 0
+    },
+    "27": {
+      "normal": 0,
+      "fraud": 1
+    },
+    "28": {
+      "normal": 0,
+      "fraud": 1
+    },
+    "30": {
+      "normal": 1,
+      "fraud": 0
+    }
+  },
+  "mr1_reference": {
+    "aggregate_count": 11,
+    "valid_amount_sum": "11010",
+    "maximum_amount": "9500",
+    "aggregates": {
+      "C1001|1": {
+        "count": 1,
+        "sum": "100",
+        "max": "100",
+        "types": {
+          "PAYMENT": 1
+        }
+      },
+      "C1001|2": {
+        "count": 1,
+        "sum": "200",
+        "max": "200",
+        "types": {
+          "PAYMENT": 1
+        }
+      },
+      "C1001|5": {
+        "count": 1,
+        "sum": "300",
+        "max": "300",
+        "types": {
+          "TRANSFER": 1
+        }
+      },
+      "C1001|26": {
+        "count": 1,
+        "sum": "400",
+        "max": "400",
+        "types": {
+          "CASH_OUT": 1
+        }
+      },
+      "C1001|27": {
+        "count": 1,
+        "sum": "50",
+        "max": "50",
+        "types": {
+          "CASH_IN": 1
+        }
+      },
+      "C1001|28": {
+        "count": 1,
+        "sum": "9500",
+        "max": "9500",
+        "types": {
+          "TRANSFER": 1
+        }
+      },
+      "C1002|10": {
+        "count": 3,
+        "sum": "60",
+        "max": "30",
+        "types": {
+          "CASH_OUT": 1,
+          "PAYMENT": 1,
+          "TRANSFER": 1
+        }
+      },
+      "C1003|10": {
+        "count": 1,
+        "sum": "75",
+        "max": "75",
+        "types": {
+          "PAYMENT": 1
+        }
+      },
+      "C1003|12": {
+        "count": 1,
+        "sum": "25",
+        "max": "25",
+        "types": {
+          "DEBIT": 1
+        }
+      },
+      "C1004|20": {
+        "count": 1,
+        "sum": "100",
+        "max": "100",
+        "types": {
+          "CASH_IN": 1
+        }
+      },
+      "C1005|30": {
+        "count": 1,
+        "sum": "200",
+        "max": "200",
+        "types": {
+          "TRANSFER": 1
+        }
+      }
+    }
+  }
+}

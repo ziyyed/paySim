@@ -1,0 +1,166 @@
+name: p02-paysim
+
+services:
+  namenode:
+    image: p02/hadoop-namenode:3.2.1-java11
+    build:
+      context: ./docker/hadoop-java11
+      args:
+        BASE_IMAGE: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    container_name: p02-namenode
+    restart: unless-stopped
+    environment:
+      CLUSTER_NAME: p02
+      JAVA_HOME: /opt/java11
+      CORE_CONF_fs_defaultFS: hdfs://namenode:9000
+      HDFS_CONF_dfs_replication: "1"
+      HDFS_CONF_dfs_namenode_datanode_registration_ip___hostname___check: "false"
+      YARN_CONF_yarn_resourcemanager_hostname: resourcemanager
+      MAPRED_CONF_mapreduce_framework_name: yarn
+      MAPRED_CONF_mapreduce_map_memory_mb: "256"
+      MAPRED_CONF_mapreduce_reduce_memory_mb: "256"
+      MAPRED_CONF_mapreduce_map_java_opts: "-Xmx192m"
+      MAPRED_CONF_mapreduce_reduce_java_opts: "-Xmx192m"
+      MAPRED_CONF_yarn_app_mapreduce_am_resource_mb: "256"
+      MAPRED_CONF_yarn_app_mapreduce_am_command_opts: "-Xmx192m"
+      MAPRED_CONF_yarn_app_mapreduce_am_env: HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1
+      MAPRED_CONF_mapreduce_map_env: HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1
+      MAPRED_CONF_mapreduce_reduce_env: HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1
+    ports:
+      - "9870:9870"
+      - "9000:9000"
+    volumes:
+      - namenode_data:/hadoop/dfs/name
+    mem_limit: 768m
+    healthcheck:
+      test: ["CMD-SHELL", "hdfs dfs -ls / >/dev/null 2>&1"]
+      interval: 15s
+      timeout: 10s
+      retries: 20
+      start_period: 45s
+
+  datanode:
+    image: p02/hadoop-datanode:3.2.1-java11
+    build:
+      context: ./docker/hadoop-java11
+      args:
+        BASE_IMAGE: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: p02-datanode
+    restart: unless-stopped
+    depends_on:
+      namenode:
+        condition: service_healthy
+    environment:
+      CORE_CONF_fs_defaultFS: hdfs://namenode:9000
+      JAVA_HOME: /opt/java11
+      HDFS_CONF_dfs_replication: "1"
+      HDFS_CONF_dfs_namenode_datanode_registration_ip___hostname___check: "false"
+      SERVICE_PRECONDITION: "namenode:9870"
+    ports:
+      - "9864:9864"
+    volumes:
+      - datanode_data:/hadoop/dfs/data
+    mem_limit: 768m
+
+  resourcemanager:
+    image: p02/hadoop-resourcemanager:3.2.1-java11
+    build:
+      context: ./docker/hadoop-java11
+      args:
+        BASE_IMAGE: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
+    container_name: p02-resourcemanager
+    restart: unless-stopped
+    depends_on:
+      namenode:
+        condition: service_healthy
+    environment:
+      CORE_CONF_fs_defaultFS: hdfs://namenode:9000
+      JAVA_HOME: /opt/java11
+      YARN_CONF_yarn_resourcemanager_hostname: resourcemanager
+      YARN_CONF_yarn_resourcemanager_address: resourcemanager:8032
+      YARN_CONF_yarn_resourcemanager_scheduler_address: resourcemanager:8030
+      YARN_CONF_yarn_resourcemanager_resource___tracker_address: resourcemanager:8031
+      YARN_CONF_yarn_resourcemanager_webapp_address: resourcemanager:8088
+      YARN_CONF_yarn_scheduler_minimum___allocation___mb: "128"
+      YARN_CONF_yarn_scheduler_maximum___allocation___mb: "512"
+      MAPRED_CONF_mapreduce_framework_name: yarn
+      MAPRED_CONF_yarn_app_mapreduce_am_env: HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1
+      MAPRED_CONF_mapreduce_map_env: HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1
+      MAPRED_CONF_mapreduce_reduce_env: HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1
+      SERVICE_PRECONDITION: "namenode:9870"
+    ports:
+      - "8088:8088"
+    mem_limit: 768m
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8088/ws/v1/cluster/info >/dev/null"]
+      interval: 15s
+      timeout: 10s
+      retries: 20
+      start_period: 45s
+
+  nodemanager:
+    image: p02/hadoop-nodemanager:3.2.1-java11
+    build:
+      context: ./docker/hadoop-java11
+      args:
+        BASE_IMAGE: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
+    container_name: p02-nodemanager
+    restart: unless-stopped
+    depends_on:
+      resourcemanager:
+        condition: service_healthy
+      datanode:
+        condition: service_started
+    environment:
+      CORE_CONF_fs_defaultFS: hdfs://namenode:9000
+      JAVA_HOME: /opt/java11
+      YARN_CONF_yarn_resourcemanager_hostname: resourcemanager
+      YARN_CONF_yarn_resourcemanager_resource___tracker_address: resourcemanager:8031
+      YARN_CONF_yarn_nodemanager_aux___services: mapreduce_shuffle
+      YARN_CONF_yarn_nodemanager_resource_memory___mb: "512"
+      MAPRED_CONF_mapreduce_framework_name: yarn
+      MAPRED_CONF_yarn_app_mapreduce_am_env: HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1
+      MAPRED_CONF_mapreduce_map_env: HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1
+      MAPRED_CONF_mapreduce_reduce_env: HADOOP_MAPRED_HOME=/opt/hadoop-3.2.1
+      SERVICE_PRECONDITION: "resourcemanager:8088 namenode:9870 datanode:9864"
+    ports:
+      - "8042:8042"
+    mem_limit: 1g
+
+  kafka:
+    image: confluentinc/cp-kafka:7.6.0
+    container_name: p02-kafka
+    restart: unless-stopped
+    environment:
+      CLUSTER_ID: MkU3OEVBNTcwNTJENDM2Qk
+      KAFKA_NODE_ID: "1"
+      KAFKA_BROKER_ID: "1"
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:29093
+      KAFKA_LISTENERS: INTERNAL://0.0.0.0:29092,EXTERNAL://0.0.0.0:9092,CONTROLLER://0.0.0.0:29093
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:29092,EXTERNAL://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: "1"
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: "1"
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: "1"
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: "0"
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_HEAP_OPTS: "-Xms256m -Xmx256m"
+    ports:
+      - "9092:9092"
+    volumes:
+      - kafka_data:/var/lib/kafka/data
+    mem_limit: 768m
+    healthcheck:
+      test: ["CMD-SHELL", "kafka-topics --bootstrap-server localhost:9092 --list >/dev/null 2>&1"]
+      interval: 10s
+      timeout: 10s
+      retries: 20
+      start_period: 30s
+
+volumes:
+  namenode_data:
+  datanode_data:
+  kafka_data:

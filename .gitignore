@@ -1,0 +1,17 @@
+# Never publish the downloaded source or Kaggle credentials.
+data/raw/
+PS_20174392719_1491204439457_log.csv
+*.zip
+.kaggle/
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Generated local audit / smoke evidence is included only after review.
+# Uncomment these if evidence must remain local:
+# results/paysim-audit-manifest.json

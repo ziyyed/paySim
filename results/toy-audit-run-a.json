@@ -1,0 +1,128 @@
+{
+  "audit_schema_version": 1,
+  "class_counts_by_step": {
+    "1": {
+      "fraud": 0,
+      "normal": 1
+    },
+    "10": {
+      "fraud": 1,
+      "normal": 3
+    },
+    "12": {
+      "fraud": 0,
+      "normal": 1
+    },
+    "2": {
+      "fraud": 0,
+      "normal": 1
+    },
+    "20": {
+      "fraud": 0,
+      "normal": 1
+    },
+    "26": {
+      "fraud": 0,
+      "normal": 1
+    },
+    "27": {
+      "fraud": 1,
+      "normal": 0
+    },
+    "28": {
+      "fraud": 1,
+      "normal": 0
+    },
+    "30": {
+      "fraud": 0,
+      "normal": 1
+    },
+    "5": {
+      "fraud": 0,
+      "normal": 1
+    }
+  },
+  "class_totals": {
+    "fraud": 3,
+    "normal": 10
+  },
+  "dataset": {
+    "license": "CC BY-SA 4.0",
+    "source_file": "toy_paysim.csv",
+    "source_sha256": "b9678d722bd5dd665ac3db7569b960f6d44fef37414e84689ef83206f7e9b160",
+    "source_size_bytes": 902,
+    "source_url": "https://www.kaggle.com/datasets/ealaxi/paysim1",
+    "title": "Synthetic Financial Datasets For Fraud Detection (PaySim)"
+  },
+  "quality": {
+    "blank_cells_by_column": {},
+    "destination_prefix_counts": {
+      "merchant_M": 5,
+      "other": 8
+    },
+    "duplicates_removed": 0,
+    "exact_duplicate_detection": "disk-backed SQLite over parsed data-row fields",
+    "exact_duplicate_rows": 0,
+    "flagged_fraud_counts": {
+      "0": 13,
+      "1": 0
+    },
+    "negative_balance_values": 0,
+    "transaction_type_counts": {
+      "CASH_IN": 2,
+      "CASH_OUT": 2,
+      "DEBIT": 1,
+      "PAYMENT": 4,
+      "TRANSFER": 4
+    },
+    "unknown_type_rows": 0,
+    "zero_amount_rows": 0
+  },
+  "rows": {
+    "data_rows": 16,
+    "reconciles": true,
+    "rejected_rows": 3,
+    "rejections_by_reason": {
+      "duplicate_header": 1,
+      "invalid_step": 1,
+      "negative_amount": 1
+    },
+    "valid_rows": 13
+  },
+  "schema": {
+    "expected_column_count": 11,
+    "expected_columns": [
+      "step",
+      "type",
+      "amount",
+      "nameOrig",
+      "oldbalanceOrg",
+      "newbalanceOrig",
+      "nameDest",
+      "oldbalanceDest",
+      "newbalanceDest",
+      "isFraud",
+      "isFlaggedFraud"
+    ],
+    "matches_expected_columns": true,
+    "matches_expected_order": true,
+    "observed_column_count": 11,
+    "observed_columns": [
+      "step",
+      "type",
+      "amount",
+      "nameOrig",
+      "oldbalanceOrg",
+      "newbalanceOrig",
+      "nameDest",
+      "oldbalanceDest",
+      "newbalanceDest",
+      "isFraud",
+      "isFlaggedFraud"
+    ]
+  },
+  "step_range": {
+    "max": 30,
+    "min": 1
+  }
+}

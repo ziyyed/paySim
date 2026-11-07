@@ -1,0 +1,26 @@
+{
+  "smoke_schema_version": 1,
+  "run_id": "db1d62ab892845ccb2768d8125b0281e",
+  "executed_at_utc": "2026-11-07T13:58:42.9341627Z",
+  "hdfs": {
+    "status": "passed",
+    "path": "/p02/week2-smoke/db1d62ab892845ccb2768d8125b0281e.txt",
+    "readback_matches": true,
+    "uploaded_sha256": "c0f3a6c19211ba0152b758c843d99133c87747a318fb77e877e81ea0a4e2427d",
+    "readback_sha256": "c0f3a6c19211ba0152b758c843d99133c87747a318fb77e877e81ea0a4e2427d"
+  },
+  "kafka": {
+    "status": "passed",
+    "topic": "week2-smoke-db1d62ab892845ccb2768d8125b0281e",
+    "event_received": true,
+    "event_has_fraud_label": false,
+    "event": {
+      "event_id": "week2-smoke-db1d62ab892845ccb2768d8125b0281e",
+      "step": 1,
+      "type": "PAYMENT",
+      "amount": 12.5,
+      "nameOrig": "C_TEST_01",
+      "nameDest": "M_TEST_01"
+    }
+  }
+}
