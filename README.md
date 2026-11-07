@@ -85,7 +85,7 @@ docker compose -f environment/docker-compose.yml ps
 ## Source and attribution
 
 - Dataset: [Synthetic Financial Datasets For Fraud Detection (PaySim)](https://www.kaggle.com/datasets/ealaxi/paysim1), by Edgar Lopez-Rojas and collaborators.
-- Kaggle lists the dataset under the **CC BY-SA 4.0** license. This snapshot includes no copied source rows other than the separately labelled project toy fixture.
+- Kaggle lists the dataset under the **CC BY-SA 4.0** license. The full source CSV is excluded; the published steps 1–2 sample is source-derived and distributed with attribution under CC BY-SA 4.0. The toy fixture is synthetic.
 - PaySim is synthetic. Its metrics must not be generalized to real financial fraud without separate evidence.
 - The source description warns that fraud transactions are cancelled; the four balance fields are therefore excluded from predictive inputs.
 
